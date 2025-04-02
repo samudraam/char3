@@ -1,0 +1,359 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+#back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+  z-index: 500;
+}
+
+#back-button:hover {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+#dog-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#spawn-btn {
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  background: white;
+  border-radius: 80%;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 500;
+}
+
+#spawn-btn:hover {
+  color: #ff7700;
+  transform: scale(1.1);
+}
+
+#spawn-btn .btn-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: inherit;
+}
+
+.dog-img {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.image-2-container {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  margin: 4rem auto;
+}
+
+.background-2-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tile {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #007a66;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tile:hover {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+.top-right {
+  top: 0;
+  left: 50%;
+}
+.bottom-left {
+  top: 50%;
+  left: 0;
+}
+.bottom-right {
+  top: 50%;
+  left: 50%;
+}
+
+/* ---------------------------- */
+#note-canvas {
+  position: relative;
+  width: 150vh;
+  height: 150vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+.sticky-note {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: "Comic Sans MS", "Patrick Hand", sans-serif;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.sticky-note.placed {
+  pointer-events: auto;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+}
+
+.dot-reveal-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#expanding-dot {
+  width: 100px;
+  height: 100px;
+  background: black;
+  border-radius: 50%;
+  z-index: 2;
+  transition: transform 1.2s ease-in-out;
+}
+
+.scroll-text {
+  margin-top: 1rem;
+  color: #ccc;
+  font-size: 1.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  z-index: 2;
+}
+
+#hidden-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  z-index: 4;
+  transition: opacity 1s ease-in-out;
+}
+
+.eyes-container {
+  background-color: #665021;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.eye {
+  width: 140px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pupil {
+  width: 40px;
+  height: 40px;
+  background: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  transition: top 0.05s, left 0.05s;
+}
+
+.bounce-scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  overflow: hidden;
+}
+
+#ball {
+  width: 14vw;
+  height: 20vh;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 50vh;
+  }
+}
+
+.color-picker {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s ease;
+}
+
+.color-option.selected {
+  border: 2px solid #aaa;
+}
+
+#click-zone {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  background: #fff;
+  overflow: hidden;
+  cursor: crosshair;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-instruction {
+  color: #ddd;
+  font-size: 3rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+
+.slider-reveal-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-mask {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-mask img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.2s ease-out;
+}
+
+#reveal-slider {
+  margin-top: 1.5rem;
+  width: 100%;
+  accent-color: #992e2e;
+}
+
+.center-page {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;
+  }
+
+.loader {
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f03355;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+}
+.loader.morphed {
+  border-radius: 0;
+  background: #ffa516;
+  clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+}
