@@ -83,6 +83,16 @@ const pageData = {
         <div class="loader"></div>
     </div>`,
   },
+  10: {
+    html: `
+    <div class="infinite-loading-wrapper">
+      <div class="infinite-bar">
+        <div class="bar-fill"></div>
+      </div>
+      <p class="loading-text">Loading<span class="dots"></span></p>
+    </div>
+  `,
+  },
 };
 
 if (pageData[id]) {
@@ -273,7 +283,7 @@ if (pageData[id]) {
     const shape = document.querySelector(".loader");
 
     shape.addEventListener("click", () => {
-    shape.classList.toggle("morphed");
+      shape.classList.toggle("morphed");
     });
   }
 } else {
