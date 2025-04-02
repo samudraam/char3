@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";const n=document.querySelectorAll(".number-box");n.forEach((e,o)=>{e.addEventListener("click",()=>{const i=o+1;window.location.assign(`/viewer.html?id=${i}`)})});
